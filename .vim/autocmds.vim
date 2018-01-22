@@ -32,3 +32,6 @@ endif
 
 " Close if NERDTree is the only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Hack to get indent guides to start on neovim/vimr
+autocmd VimEnter * :IndentGuidesEnable
