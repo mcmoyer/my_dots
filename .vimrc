@@ -4,6 +4,11 @@ source ~/.vim/packages.vim
 colorscheme one
 set background=dark
 let g:one_allow_italics = 1
+" vimr ignores this and uses the gui to set the guifont...which kind of makes
+" sense
+if has("gui_running")
+  set guifont=Hack:h14
+endif
 
 " store lots of :cmdline history
 set history=10000
