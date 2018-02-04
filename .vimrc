@@ -71,6 +71,13 @@ set noswapfile
 iabbrev shoudl should
 iabbrev campaing campaign
 
+" Configure the wiki from vim-wiki
+let wiki = {}
+let wiki.path = '~/Dropbox/vimwiki/'
+let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'ruby': 'ruby', 'bash': 'bash'}
+let g:vimwiki_list = [wiki]
+
+
 source ~/.vim/autocmds.vim
 source ~/.vim/keymaps.vim  
 

@@ -15,11 +15,12 @@ call minpac#add('tpope/vim-surround')
 call minpac#add('rking/ag.vim')
 call minpac#add('ctrlpvim/ctrlp.vim')
 
-"CtrlP custom filter
-let g:ctrlp_custom_ignore = {
- \ 'dir': 'tmp\|\.git$\|vendor/bundle/ruby\|public/system\|\.sass-cache'
- \ }
-
+""CtrlP custom filter
+"let g:ctrlp_custom_ignore = {
+" \ 'dir': 'tmp\|\.git$\|vendor/bundle/ruby\|public/system\|\.sass-cache'
+" \ }
+let g:ctrlp_working_path_mode = 'cra'
+let g:ctrlp_user_command = 'ag . --silent -l -g ""'
 
 " Airline — Lean & mean status/tabline.
 call minpac#add('bling/vim-airline')
@@ -53,6 +54,10 @@ call minpac#add('elzr/vim-json')
 
 " who doesn't need a personal local wiki
 call minpac#add('vimwiki/vimwiki')
+let wiki = {}
+let wiki.path = '~/Dropbox/vimwiki/'
+let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'ruby': 'ruby', 'bash': 'bash'}
+let g:vimwiki_list = [wiki]
 
 " quick navigation to factory girl factories
 call minpac#add('christoomey/vim-rfactory')
