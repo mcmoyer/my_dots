@@ -7,7 +7,7 @@ let g:one_allow_italics = 1
 " vimr ignores this and uses the gui to set the guifont...which kind of makes
 " sense
 if has("gui_running")
-  set guifont=Hack:h14
+  set guifont=Hack:h15
 endif
 
 " store lots of :cmdline history
@@ -70,7 +70,7 @@ set noswapfile
 " Common misspellings
 iabbrev shoudl should
 iabbrev campaing campaign
-
+iabbrev fsl # frozen_string_literal: true<cr><bs><bs><cr>
 " Configure the wiki from vim-wiki
 let wiki = {}
 let wiki.path = '~/Dropbox/vimwiki/'

@@ -69,3 +69,8 @@ nmap <silent> <Leader>p :NERDTreeToggle<CR>
 " Copy to system clipboard
 vnoremap <C-c> :w !pbcopy<CR><CR>
 
+" Map CTRL P to fuzzy find if not in macvim
+if has("gui_macvim") == 0
+  nnoremap <silent> <C-p> :FuzzyOpen<CR>
+endif
+

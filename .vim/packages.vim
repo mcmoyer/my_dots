@@ -13,14 +13,17 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('tpope/vim-surround')
 call minpac#add('rking/ag.vim')
-call minpac#add('ctrlpvim/ctrlp.vim')
 
-""CtrlP custom filter
-"let g:ctrlp_custom_ignore = {
-" \ 'dir': 'tmp\|\.git$\|vendor/bundle/ruby\|public/system\|\.sass-cache'
-" \ }
-let g:ctrlp_working_path_mode = 'cra'
-let g:ctrlp_user_command = 'ag . --silent -l -g ""'
+if has('nvim') == 0
+  call minpac#add('ctrlpvim/ctrlp.vim')
+
+  ""CtrlP custom filter
+  "let g:ctrlp_custom_ignore = {
+  " \ 'dir': 'tmp\|\.git$\|vendor/bundle/ruby\|public/system\|\.sass-cache'
+  " \ }
+  let g:ctrlp_working_path_mode = 'cra'
+  let g:ctrlp_user_command = 'ag . --silent -l -g ""'
+endif
 
 " Airline — Lean & mean status/tabline.
 call minpac#add('bling/vim-airline')
@@ -70,3 +73,14 @@ endif
 
 " why type end when you don't have to?
 call minpac#add('tpope/vim-endwise')
+
+" display git additions, deletions or changes in the gutter
+call minpac#add('airblade/vim-gitgutter')
+
+" run rspec tests from inside vim
+" https://github.com/itmammoth/run-rspec.vim
+call minpac#add('itmammoth/run-rspec.vim')
+
+" code folding for rspec/capybara files
+" call minpac#add('rlue/vim-fold-rspec')
+
