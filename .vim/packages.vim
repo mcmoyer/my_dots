@@ -1,5 +1,8 @@
 command! PackUpdate packadd minpac | source $MYVIMRC | redraw | call minpac#update()
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
+
+packadd minpac
 
 if !exists('*minpac#init')
   finish
@@ -7,6 +10,11 @@ endif
 
 " install minpac with the one trick the internet is talking about 
 " git clone https://github.com/k-takata/minpac.git ~/.vim/pack/minpac/opt/minpac
+if has('nvim') 
+  set packpath^=~/.neovimpacks
+else
+  set packpath^=~/.vim8packs
+endif
 
 call minpac#init()
 
@@ -39,6 +47,9 @@ call minpac#add('scrooloose/nerdtree')
 
 " vim fugitive - the vim git integration
 call minpac#add('tpope/vim-fugitive')
+
+" vim vim-rhubarb - allows Gbrowse behavior on vim-fugitive
+call minpac#add('tpope/vim-rhubarb')
 
 " ruby thingy bobs
 call minpac#add('vim-ruby/vim-ruby')
@@ -84,3 +95,16 @@ call minpac#add('itmammoth/run-rspec.vim')
 " code folding for rspec/capybara files
 " call minpac#add('rlue/vim-fold-rspec')
 
+" vim indent object allows you to select text by indentation level
+call minpac#add('michaeljsmith/vim-indent-object')
+
+" nginx syntax highlighting for vim
+call minpac#add('chr4/nginx.vim')
+
+" fuzzy finder for GeNeovim
+if has("nvim")
+  call minpac#add('akiyosi/gonvim-fuzzy')
+endif
+
+" NERDTree
+call minpac#add('preservim/nerdtree')

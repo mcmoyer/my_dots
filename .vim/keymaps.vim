@@ -74,3 +74,8 @@ if has("gui_macvim") == 0
   nnoremap <silent> <C-p> :FuzzyOpen<CR>
 endif
 
+" Create a function to open a neovim terminal in a small split window and run the current spec 
+function! RunSpec()
+  exec winheight(0)/4."split" | terminal execute 'bundle exec rspec %:' . line('.')
+endfunction
+nnoremap <leader>t :call RunSpec()<cr>

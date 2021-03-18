@@ -27,17 +27,17 @@ autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 if has("nvim") == 0
   " Start NERDTree if vim started without any files
   autocmd StdinReadPre *  let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  autocmd vimenter * if !argc() | NERDTree | endif
 endif
 
 " Close if NERDTree is the only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Hack to get indent guides to start on neovim/vimr
-autocmd VimEnter * :IndentGuidesEnable
+"autocmd VimEnter * :IndentGuidesEnable
 
 " Strip trailing white space
-autocmd BufWritePre *.py,*.js,*.rb,*.erb,*.ex,*.eex :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.rb,*.erb,*.rake,*.ex,*.eex :call <SID>StripTrailingWhitespaces()
 function! <SID>StripTrailingWhitespaces()
   " Preparation: save last search and cursor position 
   let _s=@/

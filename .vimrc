@@ -1,3 +1,5 @@
+set nocompatible
+
 source ~/.vim/packages.vim
 
 " eye candy config
@@ -6,7 +8,7 @@ set background=dark
 let g:one_allow_italics = 1
 " vimr ignores this and uses the gui to set the guifont...which kind of makes
 " sense
-if has("gui_running")
+if has("gui_running") && !has("nvim")
   set guifont=Hack:h15
 endif
 
@@ -57,6 +59,11 @@ set mouse=a
 " hide buffers when not displayed
 set hidden
 
+" in neovim, configure clipboard to use the OS's clipboard
+if has("nvim")
+  set clipboard=unnamedplus
+endif
+
 " load ftplugins and indent files
 filetype off
 filetype plugin indent on
@@ -70,13 +77,13 @@ set noswapfile
 " Common misspellings
 iabbrev shoudl should
 iabbrev campaing campaign
-iabbrev fsl # frozen_string_literal: true<cr><bs><bs><cr>
+iabbrev fsl # frozen_string_literal: true
+iabbrev dabc # rubocop:disable Metrics/AbcSize
 " Configure the wiki from vim-wiki
 let wiki = {}
 let wiki.path = '~/Dropbox/vimwiki/'
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'ruby': 'ruby', 'bash': 'bash'}
 let g:vimwiki_list = [wiki]
-
 
 source ~/.vim/autocmds.vim
 source ~/.vim/keymaps.vim  
