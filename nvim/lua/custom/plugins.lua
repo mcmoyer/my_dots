@@ -52,17 +52,9 @@ return packer.startup(function(use)
   -- use "moll/vim-bbye"
   -- use "nvim-lualine/lualine.nvim"
   use {
-    "akinsho/toggleterm.nvim",
-    tag = 'v1.*'
-  }
-  use {
     "ahmedkhalf/project.nvim",
     config = function()
-      require("project_nvim").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require("project_nvim").setup() 
     end
   }
 
